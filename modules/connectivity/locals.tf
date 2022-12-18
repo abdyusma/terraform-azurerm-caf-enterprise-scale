@@ -589,13 +589,13 @@ locals {
     for location in local.hub_network_locations :
     location =>
     try(local.custom_settings.azurerm_public_ip["connectivity_vpn"][location].name,
-    "${local.vpn_gateway_name[location]}-pip")
+    "pip-${local.vpn_gateway_name[location]}")
   }
   vpn_gateway_pip_2_name = {
     for location in local.hub_network_locations :
     location =>
     try(local.custom_settings.azurerm_public_ip["connectivity_vpn_2"][location].name,
-    "${local.vpn_gateway_name[location]}-pip2")
+    "pip-${local.vpn_gateway_name[location]}-2")
   }
   vpn_gateway_pip_resource_id_prefix = {
     for location in local.hub_network_locations :
