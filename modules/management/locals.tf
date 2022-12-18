@@ -99,7 +99,7 @@ locals {
     "${local.resource_group_resource_id}/providers/Microsoft.OperationalInsights/workspaces/${local.azurerm_log_analytics_workspace.name}"
   )
   azurerm_log_analytics_workspace = {
-    name                              = lookup(local.custom_settings_la_workspace, "name", "la-${local.resource_prefix}-${local.resource_suffix}")
+    name                              = lookup(local.custom_settings_la_workspace, "name", "la-${local.resource_prefix}${local.resource_suffix}")
     resource_group_name               = lookup(local.custom_settings_la_workspace, "resource_group_name", local.resource_group_name)
     location                          = lookup(local.custom_settings_la_workspace, "location", local.location)
     sku                               = lookup(local.custom_settings_la_workspace, "sku", "PerGB2018")
