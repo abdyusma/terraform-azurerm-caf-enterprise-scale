@@ -349,7 +349,7 @@ locals {
     for location in local.hub_network_locations :
     location =>
     try(local.custom_settings.azurerm_virtual_network["connectivity"][location].name,
-    "${local.resource_prefix}-hub-${location}${local.resource_suffix}")
+    "vnet-${local.resource_prefix}-hub-${location}${local.resource_suffix}")
   }
   virtual_network_resource_group_id = {
     for location in local.hub_network_locations :
