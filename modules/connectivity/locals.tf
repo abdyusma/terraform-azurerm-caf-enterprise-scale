@@ -277,7 +277,7 @@ locals {
       for location in local.connectivity_locations :
       location =>
       try(local.custom_settings.azurerm_resource_group["connectivity"][location].name,
-      "${local.resource_prefix}-connectivity-${location}${local.resource_suffix}")
+      "rg-${local.resource_prefix}-connectivity-${location}${local.resource_suffix}")
     }
     virtual_wan = {
       for location in local.virtual_wan_locations :
@@ -354,7 +354,7 @@ locals {
     for location in local.hub_network_locations :
     location =>
     try(local.custom_settings.azurerm_virtual_network["connectivity"][location].name,
-    "${local.resource_prefix}-hub-${location}${local.resource_suffix}")
+    "vnet-${local.resource_prefix}-hub-${location}${local.resource_suffix}")
   }
   virtual_network_resource_group_id = {
     for location in local.hub_network_locations :
@@ -474,7 +474,7 @@ locals {
     for location in local.hub_network_locations :
     location =>
     try(local.custom_settings.azurerm_virtual_network_gateway["connectivity_expressroute"][location].name,
-    "${local.resource_prefix}-ergw-${location}${local.resource_suffix}")
+    "ergw-${local.resource_prefix}-${location}${local.resource_suffix}")
   }
   er_gateway_resource_id_prefix = {
     for location in local.hub_network_locations :
@@ -490,7 +490,7 @@ locals {
     for location in local.hub_network_locations :
     location =>
     try(local.custom_settings.azurerm_public_ip["connectivity_expressroute"][location].name,
-    "${local.er_gateway_name[location]}-pip")
+    "pip-${local.er_gateway_name[location]}")
   }
   er_gateway_pip_resource_id_prefix = {
     for location in local.hub_network_locations :
@@ -594,13 +594,13 @@ locals {
     for location in local.hub_network_locations :
     location =>
     try(local.custom_settings.azurerm_public_ip["connectivity_vpn"][location].name,
-    "${local.vpn_gateway_name[location]}-pip")
+    "pip-${local.vpn_gateway_name[location]}")
   }
   vpn_gateway_pip_2_name = {
     for location in local.hub_network_locations :
     location =>
     try(local.custom_settings.azurerm_public_ip["connectivity_vpn_2"][location].name,
-    "${local.vpn_gateway_name[location]}-pip2")
+    "pip-${local.vpn_gateway_name[location]}-2")
   }
   vpn_gateway_pip_resource_id_prefix = {
     for location in local.hub_network_locations :
@@ -785,7 +785,7 @@ locals {
     for location in local.hub_network_locations :
     location =>
     try(local.custom_settings.azurerm_firewall["connectivity"][location].name,
-    "${local.resource_prefix}-fw-${location}${local.resource_suffix}")
+    "fw-${local.resource_prefix}-${location}${local.resource_suffix}")
   }
   azfw_resource_id_prefix = {
     for location in local.hub_network_locations :
@@ -833,7 +833,7 @@ locals {
     for location in local.hub_network_locations :
     location =>
     try(local.custom_settings.azurerm_public_ip["connectivity_firewall"][location].name,
-    "${local.azfw_name[location]}-pip")
+    "pip-${local.azfw_name[location]}")
   }
   azfw_pip_resource_id_prefix = {
     for location in local.hub_network_locations :
@@ -1189,7 +1189,7 @@ locals {
     for location in local.virtual_hub_locations :
     location =>
     try(local.custom_settings.azurerm_express_route_gateway["virtual_wan"][location].name,
-    "${local.resource_prefix}-ergw-${location}${local.resource_suffix}")
+    "ergw-${local.resource_prefix}-${location}${local.resource_suffix}")
   }
   virtual_hub_express_route_gateway_resource_id_prefix = {
     for location in local.virtual_hub_locations :
@@ -1226,7 +1226,7 @@ locals {
     for location in local.virtual_hub_locations :
     location =>
     try(local.custom_settings.azurerm_vpn_gateway["virtual_wan"][location].name,
-    "${local.resource_prefix}-vpngw-${location}${local.resource_suffix}")
+    "vpngw-${local.resource_prefix}-${location}${local.resource_suffix}")
   }
   virtual_hub_vpn_gateway_resource_id_prefix = {
     for location in local.virtual_hub_locations :
