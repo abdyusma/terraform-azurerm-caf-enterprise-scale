@@ -116,6 +116,16 @@ locals {
     internet_query_enabled             = lookup(local.custom_settings_la_workspace, "internet_query_enabled", true)
     reservation_capacity_in_gb_per_day = lookup(local.custom_settings_la_workspace, "reservation_capacity_in_gb_per_day", null)
     tags                               = lookup(local.custom_settings_la_workspace, "tags", local.tags)
+    name                              = lookup(local.custom_settings_la_workspace, "name", "la-${local.resource_prefix}${local.resource_suffix}")
+    resource_group_name               = lookup(local.custom_settings_la_workspace, "resource_group_name", local.resource_group_name)
+    location                          = lookup(local.custom_settings_la_workspace, "location", local.location)
+    sku                               = lookup(local.custom_settings_la_workspace, "sku", "PerGB2018")
+    retention_in_days                 = lookup(local.custom_settings_la_workspace, "retention_in_days", local.settings.log_analytics.config.retention_in_days)
+    daily_quota_gb                    = lookup(local.custom_settings_la_workspace, "daily_quota_gb", null)
+    internet_ingestion_enabled        = lookup(local.custom_settings_la_workspace, "internet_ingestion_enabled", true)
+    internet_query_enabled            = lookup(local.custom_settings_la_workspace, "internet_query_enabled", true)
+    reservation_capcity_in_gb_per_day = lookup(local.custom_settings_la_workspace, "reservation_capcity_in_gb_per_day", null) # Requires version = "~> 2.48.0"
+    tags                              = lookup(local.custom_settings_la_workspace, "tags", local.tags)
   }
 }
 

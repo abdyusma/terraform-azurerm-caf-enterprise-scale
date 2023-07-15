@@ -860,7 +860,7 @@ locals {
     for location in local.hub_network_locations :
     location =>
     try(local.custom_settings.azurerm_public_ip["connectivity_firewall"][location].name,
-    "${local.azfw_name[location]}-mgmt-pip")
+    "pip-mgmt-${local.azfw_name[location]}")
   }
   azfw_pip_resource_id_prefix = {
     for location in local.hub_network_locations :
